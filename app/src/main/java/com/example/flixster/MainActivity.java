@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        @SuppressLint("WrongViewCast") RecyclerView rvMovies = findViewById(R.id.rvMovies);
+        RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
 
         // Create the adapter
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     movieAdapter.notifyDataSetChanged();
                     Log.i(TAG, "Movies: " + movies.size());
                 } catch (JSONException e) {
-                    Log.d(TAG, "Hit json exception", e);
+                    Log.e(TAG, "Hit json exception", e);
                 }
             }
 
             @Override
-            public void onFailure(int statusCode, Headers headers, String s, Throwable throwable) {
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.d(TAG, "onFailure");
             }
         });
